@@ -7,7 +7,7 @@ Currently allows specification of:
 - Open IMDB page of watchlist item in browser (-b "yes" or "no", default "no")
 - Genre selection (-g "Genre", see exported IMDB watchlist file for possibilities, specifying multiple genres currently not possible)
 
-Use "python imdb-watch.py --help" to see options
+Use "python imdb-watch.py --help" to see all available options.
 
 Example usage:
 python imdb-watch.py -f "/Users/incognito/Downloads/watchlist.csv" -b "yes" -g "Documentary"
