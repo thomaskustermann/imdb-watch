@@ -1,6 +1,7 @@
 # imdb-watch
 Small python script that randomly selects an entry from your IMDB watchlist (movie, series, other).
 Requires exported watchlist from imdb (bottom of page on waitlist).
+
 Currently allows specification of:
 - Watchlist file (-f "filename")
 - Open IMDB page of watchlist item in browser (-b "yes" or "no", default "no")
