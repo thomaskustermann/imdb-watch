@@ -3,6 +3,7 @@ import pandas as pd
 import sys
 import os
 import argparse
+import re
 #%%
 # parse input arguments
 # - watchlist file
@@ -12,11 +13,19 @@ parser.add_argument('-f', dest="imdb_file", metavar='watchlist', type=str, defau
                     help='Watchlist file that will be loaded')
 parser.add_argument('-b', dest="open_browser", metavar='browser_open', type=str, default='no',
                     help='Open imdb page in browser (yes/no)')
+parser.add_argument('-g', dest="genre", metavar='genre_film', type=str, default=None,
+                    help='Define a genre of interest')
 args = parser.parse_args()
 #%%
 #imdb=pd.read_csv(os.path.join(sys.path[0], 'WATCHLIST.csv'),delimiter=',',encoding = 'latin')
 imdb=pd.read_csv(os.path.join(sys.path[0], args.imdb_file),delimiter=',',encoding = 'latin')
-
+#%%
+def sel_genre(x):
+    return re.match(args.genre,x)
+if args.genre is not None:    
+    imdb_row=imdb["Genres"].apply(lambda x: sel_genre(str(x)) is not None)
+    imdb = imdb.loc[imdb_row]
+#%%
 satisfied = 'no'
 browser   = 'no'
 while satisfied != 'yes':
